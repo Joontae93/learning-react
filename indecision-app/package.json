@@ -1,0 +1,21 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "description": "My first react app",
+  "main": "index.js",
+  "scripts": {
+    "react": "babel src/App.js --out-file=public/scripts/app.js --presets='@babel/preset-env,@babel/preset-react'",
+    "watch": "babel src/App.js --out-file=public/scripts/app.js --presets=@babel/preset-env,@babel/preset-react --watch"
+  },
+  "author": "KJ Roelke",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.3",
+    "@babel/core": "^7.17.5",
+    "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7"
+  }
+}
