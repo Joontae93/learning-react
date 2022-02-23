@@ -15,4 +15,12 @@ module.exports = {
 			},
 		],
 	},
+	devtool: 'eval-cheap-module-source-map',
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'public'),
+		},
+		port: 8080,
+		hot: 'only',
+	},
 };
