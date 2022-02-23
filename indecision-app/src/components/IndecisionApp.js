@@ -3,9 +3,13 @@ import Header from './Header';
 import Action from './Action';
 import AddOption from './AddOption';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 class IndecisionApp extends Component {
-	state = { options: [] };
+	state = { options: [], selectedOption: undefined };
+
+	/** BEGIN HANDLERS */
+
 	handleAddOption = (option) => {
 		if (!option) {
 			return `Enter a valid option`;
@@ -26,9 +30,12 @@ class IndecisionApp extends Component {
 		}));
 	};
 	handleChoice = () => {
-		const choice = Math.floor(Math.random() * this.state.options.length),
-			option = this.state.options[choice];
-		alert(option);
+		const choice = Math.floor(Math.random() * this.state.options.length);
+		const option = this.state.options[choice];
+		this.setState(() => ({ selectedOption: option }));
+	};
+	handleClearSelectedOption = () => {
+		this.setState(() => ({ selectedOption: undefined }));
 	};
 
 	////////////////////////
@@ -64,6 +71,7 @@ class IndecisionApp extends Component {
 	componentWillUnmount() {
 		console.log('Component will unmount.');
 	}
+
 	////////////////////
 	// RENDER THE APP
 	render() {
@@ -81,6 +89,10 @@ class IndecisionApp extends Component {
 					handleDeleteSingleOption={this.handleDeleteSingleOption}
 				/>
 				<AddOption handleAddOption={this.handleAddOption} />
+				<OptionModal
+					selectedOption={this.state.selectedOption}
+					clearSelectedOption={this.handleClearSelectedOption}
+				/>
 			</main>
 		);
 	}
