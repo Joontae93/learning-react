@@ -1,21 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
 import Action from './Action';
 import AddOption from './AddOption';
 import Options from './Options';
 
-class IndecisionApp extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { options: [] };
-		this.handleDeleteAllOptions = this.handleDeleteAllOptions.bind(this);
-		this.handleChoice = this.handleChoice.bind(this);
-		this.handleAddOption = this.handleAddOption.bind(this);
-		this.handleDeleteSingleOption = this.handleDeleteSingleOption.bind(this);
-	}
-	////////////////////
-	// HANDLERS
-	handleAddOption(option) {
+class IndecisionApp extends Component {
+	state = { options: [] };
+	handleAddOption = (option) => {
 		if (!option) {
 			return `Enter a valid option`;
 		}
@@ -25,23 +16,21 @@ class IndecisionApp extends React.Component {
 		this.setState((prevState) => ({
 			options: prevState.options.concat(option),
 		}));
-	}
-
-	handleDeleteAllOptions() {
+	};
+	handleDeleteAllOptions = () => {
 		this.setState(() => ({ options: [] }));
-	}
-
-	handleDeleteSingleOption(optionToRemove) {
+	};
+	handleDeleteSingleOption = (optionToRemove) => {
 		this.setState((prevState) => ({
 			options: prevState.options.filter((option) => optionToRemove !== option),
 		}));
-	}
-
-	handleChoice() {
+	};
+	handleChoice = () => {
 		const choice = Math.floor(Math.random() * this.state.options.length),
 			option = this.state.options[choice];
 		alert(option);
-	}
+	};
+
 	////////////////////////
 	// LIFECYCLE METHODS
 	/** There are 3 stages in a component's lifecycle
