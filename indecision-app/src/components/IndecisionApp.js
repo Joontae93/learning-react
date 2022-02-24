@@ -79,16 +79,20 @@ class IndecisionApp extends Component {
 		return (
 			<main>
 				<Header subtitle={subtitle} />
-				<Action
-					hasOptions={this.state.options.length > 0}
-					handleChoice={this.handleChoice}
-				/>
-				<Options
-					options={this.state.options}
-					handleDeleteAllOptions={this.handleDeleteAllOptions}
-					handleDeleteSingleOption={this.handleDeleteSingleOption}
-				/>
-				<AddOption handleAddOption={this.handleAddOption} />
+				<div className="container">
+					<Action
+						hasOptions={this.state.options.length > 0}
+						handleChoice={this.handleChoice}
+					/>
+					<div className="widget">
+						<Options
+							options={this.state.options}
+							handleDeleteAllOptions={this.handleDeleteAllOptions}
+							handleDeleteSingleOption={this.handleDeleteSingleOption}
+						/>
+						<AddOption handleAddOption={this.handleAddOption} />
+					</div>
+				</div>
 				<OptionModal
 					selectedOption={this.state.selectedOption}
 					clearSelectedOption={this.handleClearSelectedOption}
